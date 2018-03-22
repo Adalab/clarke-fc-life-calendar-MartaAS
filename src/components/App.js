@@ -65,8 +65,8 @@ export default class App extends React.Component {
       <header>
         <nav>
         <ul>
-          <li><Link to='/'>App</Link></li>
-          <li><Link to='/Calendar'>Calendar</Link></li>
+          <li><Link to='/'>Editor</Link></li>
+          <li><Link to='/Calendar'>+</Link></li>
         </ul>
         </nav>
       </header>
