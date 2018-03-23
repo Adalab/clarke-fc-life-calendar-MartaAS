@@ -6,7 +6,7 @@ export default class Calendar extends React.Component {
 
     return(
       <div>
-        <ul className="">
+        <ul className="container_calendar">
 			{
 				info.map(
 					d =><li><p title={d.date}><img className={`face face--${d.face}`} /></p>

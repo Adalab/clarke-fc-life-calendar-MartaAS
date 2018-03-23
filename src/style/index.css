@@ -3,13 +3,32 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
-a:link
-{
-text-decoration:none;
+.header{
+  text-align: center;
+}
+.container_calendar{
+  display: flex;
+  flex-direction: row;
+}
+.container_edition{
+  text-align: center;
+}
+.container_calendar_inEdition{
+  display: flex;
+  flex-direction: row;
+}
+.check_face{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-left: 0;
+}
+a:link{
+  text-decoration:none;
 }
 ul{
-       list-style:none;
-       }
+  list-style:none;
+}
 
 .face {
   width: 50px;

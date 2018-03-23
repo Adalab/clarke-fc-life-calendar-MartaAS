@@ -7,13 +7,13 @@ export default class Edition extends React.Component  {
   render(){
     const info = this.props.infoCalendar;
     return(
-      <div className="edition__container">
+      <div className="container_edition">
       <form action="">
       <h2>Fecha</h2>
       <input id="date" type="date" onChange={this.props.selectDate} />
 
       <h2>Estado</h2>
-      <ul>
+      <ul className="check_face">
         <li><label for="o1"><input type="radio" value=":)" id="o1" name="options" onChange={this.props.whenCheckHappy}/> :) </label></li>
         <li><label for="o2"><input type="radio" value=":(" id="o2" name="options" onChange={this.props.whenCheckAngry} /> :( </label></li>
       </ul>
@@ -31,7 +31,7 @@ export default class Edition extends React.Component  {
          </Link>
       </form>
 
-      <ul className="">
+      <ul className="container_calendar_inEdition">
     {
       info.map(
         d =><li><p title={d.date}><img className={`face face--${d.face}`} /></p>

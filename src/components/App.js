@@ -83,12 +83,13 @@ export default class App extends React.Component {
 
     return (
       <div className="App">
-      <header>
+      <header className="header">
+        <h1 className="header_title">My Life Calendar</h1>
         <nav>
-        <ul>
+        <div>
 
-          <li><Link to='/addFace'>+</Link></li>
-        </ul>
+          <Link to='/addFace'><h2>+</h2></Link>
+        </div>
         </nav>
       </header>
       <Switch>
