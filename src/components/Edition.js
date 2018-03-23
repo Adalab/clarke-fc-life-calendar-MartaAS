@@ -13,25 +13,19 @@ export default class Edition extends React.Component  {
 
       <h2>Estado</h2>
       <ul>
-        <li><label for="o1"><input type="radio" value="Happy" id="o1" name="options" onChange={this.props.whenCheckHappy}/> :) </label></li>
-        <li><label for="o2"><input type="radio" value="Angry" id="o2" name="options" onChange={this.props.whenCheckAngry} /> :( </label></li>
+        <li><label for="o1"><input type="radio" value=":)" id="o1" name="options" onChange={this.props.whenCheckHappy}/> :) </label></li>
+        <li><label for="o2"><input type="radio" value=":(" id="o2" name="options" onChange={this.props.whenCheckAngry} /> :( </label></li>
       </ul>
 
       <h2>Mensaje</h2>
       <input type="text" placeholder="¿Por qué es un buen día?" onChange={this.props.whenWrite}/>
-    
-      <Link className="link" to='/Calendar'>
-          <input type="button" value="Guardar"></input>
+
+      <Link className="link" to='/'>
+          <input type="button" value="Guardar" onClick={this.props.whenSave} ></input>
          </Link>
-          <Link className="link" to='/Calendar'>
+          <Link className="link" to='/'>
           <input type="button" value="Cancelar"></input>
          </Link>
-         <Switch>
-           <Route path='/Calendar' render={() =>
-             <Calendar />}
-           />
-           <Route path="/App" component={App} />
-         </Switch>
       </form>
       </div>
     );
