@@ -5,6 +5,7 @@ import App from './App';
 
 export default class Edition extends React.Component  {
   render(){
+    const info = this.props.infoCalendar;
     return(
       <div className="edition__container">
       <form action="">
@@ -17,8 +18,10 @@ export default class Edition extends React.Component  {
         <li><label for="o2"><input type="radio" value=":(" id="o2" name="options" onChange={this.props.whenCheckAngry} /> :( </label></li>
       </ul>
 
+      <div className="edition__message">
       <h2>Mensaje</h2>
       <input type="text" placeholder="¿Por qué es un buen día?" onChange={this.props.whenWrite}/>
+      </div>
 
       <Link className="link" to='/'>
           <input type="button" value="Guardar" onClick={this.props.whenSave} ></input>
@@ -27,7 +30,19 @@ export default class Edition extends React.Component  {
           <input type="button" value="Cancelar"></input>
          </Link>
       </form>
+
+      <ul className="">
+    {
+      info.map(
+        d =><li><p title={d.date}><img className={`face face--${d.face}`} /></p>
+      <span >{d.message} </span>
+        </li>
+        )
+      }
+    </ul>
       </div>
+
+
     );
   }
 }

@@ -3,6 +3,7 @@ import { Link, Route, Switch } from 'react-router-dom';
 import Edition from './Edition';
 import Calendar from './Calendar';
 
+
 export default class App extends React.Component {
   constructor(props){
     super(props);
@@ -16,18 +17,16 @@ export default class App extends React.Component {
       ArrInfo: [],
       date: '',
       message: '',
-      face: true
+      face: ''
 
     };
   }
-
 
   handleCalendar(event){
     const dateCalendar = event.target.value; //recogemos el valor seleccionado del calendario
     this.setState({
       date: dateCalendar
     });
-//     console.log(this.state.date);
   }
 
 
@@ -36,59 +35,50 @@ export default class App extends React.Component {
     this.setState({
       message : textMessage
     });
-
-    //localStorage.setItem("lego", JSON.stringify(obj));
-    // console.log(obj);
-    //let valorrecuperado = localStorage.getItem("lego");
-    //let id = valorrecuperado.id;
-    //console.log(valorrecuperado, JSON.parse(valorrecuperado));
   }
 
   handleEmotionHappy(event){
-    // const emotionHappy = event.target.value;
-    // this.setState({
-    // smileFace : !emotionHappy
-    //const emotionHappy = document.querySelector('input[name="options"]:checked').value;
-    //console.log('>  ' + selected);
-    this.setState({
-        face: true
-  });
-  //console.log(this.state.face);
+      this.setState({
+        face: 'happy'
+    });
+    let hiddenMessage = document.querySelector('.edition__message');
+    hiddenMessage.hidden = false;
+
   }
 
   handleEmotionAngry(event){
-    const emotionangry = event.target.value;
+    let hiddenMessage = document.querySelector('.edition__message');
+    hiddenMessage.hidden = true;
+
     this.setState({
-    face: false
-  });
-   //console.log(this.state.face);
+    face: 'unhappy'
+    });
   }
 
   handleSave(){
      const dateSelected = this.state.date;
-     const messageSelected = this.state.message;
+      let messageSelected = this.state.message;
      const faceSelected = this.state.face;
-     //console.log(dateSelected +'/'+messageSelected+'/'+faceSelected );
-     const obj = {'date': dateSelected, 'message': messageSelected, 'face': faceSelected}
-     //console.log(obj);
-     let infoDays = JSON.parse(localStorage.getItem("daysMarta1"));
+     if(faceSelected == "unhappy"){
+       messageSelected = '';
+     }
+     const obj = {
+     'date': dateSelected,
+     'message': messageSelected,
+    'face': faceSelected}
+     let infoDays = JSON.parse(localStorage.getItem("myCalendar"));
 
      if(infoDays == null)  infoDays = [];
 
      localStorage.setItem("obj",JSON.stringify(obj));
 
      infoDays.push(obj);
-     //infoDays.concat(obj);
-     localStorage.setItem("daysMarta1",JSON.stringify(infoDays));
-     //console.log(localStorage.getItem("daysMarta"));
-     /* Prueba para saber lo guardado en storage */
-     //let pruebadias = localStorage.getItem("days");
-
+     localStorage.setItem("myCalendar",JSON.stringify(infoDays));
   }
 
   render() {
 
-       let infoDays = JSON.parse(localStorage.getItem("daysMarta1"));
+       let infoDays = JSON.parse(localStorage.getItem("myCalendar"));
        if(infoDays == null)  infoDays = [];
 
     return (
@@ -109,7 +99,9 @@ export default class App extends React.Component {
           whenCheckHappy={this.handleEmotionHappy}
           whenCheckAngry={this.handleEmotionAngry}
           whenSave={this.handleSave}
-          /> }
+          infoCalendar={infoDays}
+          />
+        }
         />
         <Route path='/' render={() =>
           <Calendar
