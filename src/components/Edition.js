@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link, Route, Switch } from 'react-router-dom';
+import Calendar from './Calendar';
+import App from './App';
 
 export default class Edition extends React.Component  {
   render(){
@@ -16,8 +19,19 @@ export default class Edition extends React.Component  {
 
       <h2>Mensaje</h2>
       <input type="text" placeholder="¿Por qué es un buen día?" onChange={this.props.whenWrite}/>
-      <input type="button" value="Guardar" />
-      <input type="button" value="Cancelar" />
+    
+      <Link className="link" to='/Calendar'>
+          <input type="button" value="Guardar"></input>
+         </Link>
+          <Link className="link" to='/Calendar'>
+          <input type="button" value="Cancelar"></input>
+         </Link>
+         <Switch>
+           <Route path='/Calendar' render={() =>
+             <Calendar />}
+           />
+           <Route path="/App" component={App} />
+         </Switch>
       </form>
       </div>
     );

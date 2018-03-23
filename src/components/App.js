@@ -28,7 +28,7 @@ export default class App extends React.Component {
       date : dateCalendar,
       message : textMessage
     })
-    // console.log(dateCalendar);
+     console.log(dateCalendar);
   }
 
   handleMessage(event){
@@ -36,7 +36,7 @@ export default class App extends React.Component {
     this.setState({
       message : textMessage
     })
-  //  console.log(textMessage);
+    console.log(textMessage);
   }
 
   handleEmotionHappy(event){
@@ -65,29 +65,29 @@ export default class App extends React.Component {
       <header>
         <nav>
         <ul>
-          <li><Link to='/'>Editor</Link></li>
-          <li><Link to='/Calendar'>+</Link></li>
+          
+          <li><Link to='/'>+</Link></li>
         </ul>
         </nav>
       </header>
       <Switch>
-						<Route exact path='/' render={() =>
-        <Edition
-        selectDate={this.handleCalendar}
-        whenWrite={this.handleMessage}
-        whenCheckHappy={this.handleEmotionHappy}
-        whenCheckAngry={this.handleEmotionAngry}
-        /> }
+				<Route exact path='/' render={() =>
+          <Edition
+          selectDate={this.handleCalendar}
+          whenWrite={this.handleMessage}
+          whenCheckHappy={this.handleEmotionHappy}
+          whenCheckAngry={this.handleEmotionAngry}
+          /> }
         />
         <Route path='/Calendar' render={() =>
-        <Calendar
-        />}
+          <Calendar
+          />}
         />
 
-           <Route exact path='/' component={ App } />
-           <Route path='/Calendar' component={ Calendar }
-           />
-         </Switch>
+        <Route exact path='/' component={ App } />
+        <Route path='/Calendar' component={ Calendar }
+        />
+      </Switch>
       </div>
     );
   }
