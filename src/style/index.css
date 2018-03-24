@@ -47,3 +47,16 @@ ul{
   background-repeat:  no-repeat;
   background-size: cover;
 }
+
+.calendar_item{
+ overflow: hidden;
+ width: 50px;
+ white-space: nowrap;
+
+}
+
+.calendar_message{
+   text-overflow: ellipsis;
+   display: block;
+   overflow: hidden;
+}

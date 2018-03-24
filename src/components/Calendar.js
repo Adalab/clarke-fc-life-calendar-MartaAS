@@ -9,8 +9,8 @@ export default class Calendar extends React.Component {
         <ul className="container_calendar">
 			{
 				info.map(
-					d =><li><p title={d.date}><img className={`face face--${d.face}`} /></p>
-        <span >{d.message} </span>
+					d =><li className="calendar_item"><p title={d.date}><img className={`face face--${d.face}`} /></p>
+        <span className="calendar_message" title={`${d.message}`}>{d.message} </span>
 		     	</li>
 					)
 				}
